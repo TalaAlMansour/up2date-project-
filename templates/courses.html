@@ -1,0 +1,39 @@
+ {% extends 'base.html' %}
+
+
+ {% block body %}
+ {% for course_data in data %}
+ {% for section_data in course_data.sections %}
+<div class="contin">
+  <div class="service-section">
+    <div class="skewed">
+      <div class="txt">
+        <h1>{{ section_data.section.sectiontitle }}</h1>
+        <p>
+          {{ section_data.section.description }}
+        </p>
+        
+      </div>
+      <div class="imgback">
+        <img src="./images/Thinking face-cuate.svg"alt="img"/>
+      </div>
+    </div>
+    {% for level in section_data.levels %}
+    <div class="cards">
+      <div class="card">
+
+        <div class="content">
+          <h3>{{ level.levelTitle }}</h3>
+          <p> {{level.levelDescription}}</p>
+          <a href="#"> المزيد</a>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endfor %}
+{% endfor %}
+
+{% endblock body %}
