@@ -8,10 +8,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('home/', views.add_news, name='home.html'),
-    path('', views.courses_list, name='courses_list'),
-
-  #  path('/', views.leatest_courses, name='leatest_courses'),
-
-
+  path('', home_page, name='home'),
+ path('section-detail/', section_detail, name='section-detail'),
+    
 ]

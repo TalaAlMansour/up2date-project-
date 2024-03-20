@@ -48,7 +48,6 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link" data-nav-link>Home</a>
           </li>
-
           {% for course_data in data %}
           <li class="navbar-item"><a href="#" class="navbar-link" data-nav-link >
           {{ course_data.course.coursename}}
@@ -62,14 +61,11 @@
                {% endfor%}
            
           </ul>
-          <li  class="navbar-item">
-            <a href="#" class="navbar-link" data-nav-link> German<i class="fa-solid fa-angle-down"></i></a>
-         
-         
+        
+          {% endfor %}
 
           <li  class="navbar-item"><a href="#" class="navbar-link" data-nav-link> <i class="fa-solid fa-globe"></i> english</a></li>
 
-          {% endfor %}
         </ul>
 
       </nav>
@@ -127,14 +123,14 @@ Always up to date with us          </p>
 
 
         <li>
-          <a href="#" class="footer-link">About</a>
+          <a href="#about" class="footer-link">About</a>
         </li>
 
        
      
 
         <li>
-          <a href="#" class="footer-link">Events</a>
+          <a href="#news" class="footer-link">Events</a>
         </li>
 
       

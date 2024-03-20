@@ -2,7 +2,10 @@
 from django.shortcuts import render
 from .models import Course,Section,Level,News
 
-def courses_list(request):
+
+
+def home_page(request):
+    
     courses = Course.objects.prefetch_related('section_set__level_set').all()
 
 
@@ -23,45 +26,23 @@ def courses_list(request):
 
         data.append(course_data)
 
-    return render(request, 'courses.html', {'data': data})
-
-def add_news(request):
-    if request.method == 'POST':
-        course_id = request.POST.get('course_id')
-        news_title = request.POST.get('news_title')
-        news_desc = request.POST.get('news_desc')
-        news_date = request.POST.get('news_date')
-        lessons_num = request.POST.get('lessons_num')
-        
-
-        course = Course.objects.get(pk=course_id)
-        news = News(course_id=course_id, news_title=news_title, news_desc=news_desc, news_date=news_date, lessonsNum=lessons_num)
-        news.save()
-
-        return render(request, 'home.html',)
+     
+    news = News.objects.all()
     
-        courses = Course.objects.all()  # Retrieve all courses to populate the form
-        return render(request, 'home.html', {'courses': courses})
-
-"""""
-def leatest_courses(request):
-    courses = Course.objects.prefetch_related('section_set__level_set').all()
+    context = {
+       
+        'data': data,
+        'news': news,
+    }
     
-    latest_levels_data = [
-        {
-            'course': course,
-            'section': section,
-            'level': section.level_set.order_by('-created_at').first()
-        }
-        for course in courses
-        for section in course.section_set.all()
-    ]
+    return render(request, 'home.html', context)
+
+def section_detail(request, section_slug):
+    section = Section.objects.get(section_Slug=section_slug)
 
     context = {
-        'latest_levels_data': latest_levels_data
+        'section': section,
+        'levels': section.level_set.all()
     }
 
-    return render(request, 'home.html', context)
-       """
-
-
+    return render(request, 'courses.html', context)

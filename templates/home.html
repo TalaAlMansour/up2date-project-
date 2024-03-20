@@ -13,12 +13,10 @@
         <div class="hero-content">
 
     
-      <h2 class=" section-n">
+      <h2 class=" section-title ">
     Up To Date
    
-     
-
-        <p class="hero-text">
+       <p class="hero-text">
             <h5 class="h2 section-title">
               update your  <span class="span">skils</span> 
                 </h5>
@@ -27,13 +25,7 @@
                 </h1>
           </p> 
           
-<!-- 
-          <a href="#" class="btn has-before">
-            <span class="span">Find courses</span>
 
-            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-          </a>
--->
         </div>
 
         <figure class="hero-banner">
@@ -166,31 +158,25 @@
         news
       -->
 
-
-      <section class="section blog has-bg-image" id="blog" aria-label="blog"
-        style="background-image: url('./assets/images/blog-bg.svg')">
+      <section class="section news has-bg-image" id="news" aria-label="news"
+      style="background-image: url('./assets/images/blog-bg.svg')">
         <div class="container">
 
           <h2 class="h2 section-title">Our last courses</h2>
 
           <ul class="grid-list">
-
+            {% for item in news %}
             <li>
-              <div class="blog-card">
+              <div class="news-card">
 
                 <figure class="card-banner img-holder has-after" style="--width: 370; --height: 370;">
                   <img src="./assets/images/blog-1.jpg" width="370" height="370" loading="lazy"
-                    alt="Become A Better Blogger: Content Planning" class="img-cover">
+                    alt="new course" class="img-cover">
                 </figure>
 
                 <div class="card-content">
-
-              
-
-                
-
                   <h3 class="h3">
-                    <a href="#" class="card-title">AEC FOR BIGGNER</a>
+                    <a href="#" class="card-title">{{ item.news_title }}</a>
                   </h3>
 
                   <ul class="card-meta-list">
@@ -198,20 +184,19 @@
                     <li class="card-meta-item">
                       <ion-icon name="calendar-outline" aria-hidden="true"></ion-icon>
 
-                      <span class="span">Oct 10, 2024</span>
+                      <span class="span">{{item.news_date}}</span>
                     </li>
 
                     <li class="card-meta-item">
                       <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
                   
-                      <span class="span">8 Lessons</span>
+                      <span class="span"> {{ item.lessonsNum}}</span>
                     </li>
 
                   </ul>
                  
-
                   <p class="card-text">
-                    You will learn more about world and grammer
+                  {{item.news_desc}}
                   </p>
 
                 </div>
@@ -220,13 +205,13 @@
             </li>
 
           
-
+            {% endfor %}
          
 
           </ul>
 
           <img src="./assets/images/bose.png" width="186" height="186" loading="lazy" alt=""
-            class="shape blog-shape">
+            class="Sticker">
 
         </div>
       </section>
